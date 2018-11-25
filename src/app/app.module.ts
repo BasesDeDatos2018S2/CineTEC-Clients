@@ -5,18 +5,26 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ScreeningsComponent } from './components/screenings/screenings.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { BuyTicketComponent } from './components/buy-ticket/buy-ticket.component';
+
+import { ClientsService } from './services/clients.service';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ScreeningsComponent,
-    NavbarComponent
+    NavbarComponent,
+    BuyTicketComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    ClientsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
