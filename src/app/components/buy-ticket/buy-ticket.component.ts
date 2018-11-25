@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Seat } from '../../classes/seat';
+import { Client } from '../../classes/client';
+import { ClientsService } from '../../services/clients.service';
+
 @Component({
   selector: 'app-buy-ticket',
   templateUrl: './buy-ticket.component.html',
@@ -24,7 +27,19 @@ export class BuyTicketComponent implements OnInit {
   client_verified: boolean;
   create_client: boolean;
 
-  constructor() {
+  client:Client;
+
+
+
+
+  constructor(private clientService: ClientsService) {
+
+
+    // this.clientService.getClients().subscribe(data => {
+    //   console.log("Clientes:", JSON.stringify(data));
+    // });
+    //
+
     this.step = 0;
     this.total_seats = 1;
     this.selected_seats = new Map<string, Seat>();
@@ -33,6 +48,7 @@ export class BuyTicketComponent implements OnInit {
     this.client_id = "";
     this.client_verified = false;
     this.create_client = false;
+    this.client= new Client("","","","","","",[]);
   }
 
   ngOnInit() {
@@ -49,7 +65,7 @@ export class BuyTicketComponent implements OnInit {
         this.step = 3;
       }
     }
-  
+
 
   previousStep() {
 
@@ -102,6 +118,15 @@ console.log(this.getCurrentSeats());
   verifyClientId() {
     this.client_verified = true;
     console.log("client id", this.client_id);
+
+
+    console.log("updateClientList");
+    this.clientService.getClient(this.client_id).subscribe(data => {
+      console.log("dataV:", data);
+      this.client = data;
+    });
+
+
   }
 
   showCreateClient() {
@@ -126,5 +151,11 @@ console.log(this.getCurrentSeats());
 
   result = result.substring(0,result.lastIndexOf(","));
 return result  }
+
+
+  regresar(){
+    localStorage.setItem('screening', JSON.stringify(""));
+
+  }
 
 }

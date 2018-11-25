@@ -85,20 +85,15 @@
 
   <div class="card card-body" >
     <div class="">
-      Nombre: Gustavo Segura
-
+      Nombre: {{client.name + " " + client.lastname1+ " " + client.lastname2}}
     </div>
     <div class="">
-      Correo: gsegura96@gmail.com
-
+      Correo: {{client.email }}
     </div>
     <div class="">
-      Telefono: 88885588
-
+      Telefono: {{client.phone }}
     </div>
-
   </div>
-
 </div>
 
 
@@ -187,6 +182,6 @@
 
   <h1 class="display-4">Descargar factura</h1>
   <hr class="my-4">
-  <button class="btn btn-primary btn-lg" href="#" role="button" (click)="nextStep()" [disabled]="false">Regresar a la Cartelera </button>
+  <button class="btn btn-primary btn-lg" href="#" role="button" (click)="regresar()" [disabled]="false">Regresar a la Cartelera </button>
 
 </div>

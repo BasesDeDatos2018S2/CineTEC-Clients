@@ -2,33 +2,33 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import { Client } from '../classes/client';
+import { Movie } from '../classes/movie';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClientsService {
+export class MoviesService {
   baseurl:string;
   constructor(private httpClient:HttpClient) {
-    this.baseurl = environment.apiUrl+"client/";
-    console.log("ClientService works");
+    this.baseurl = environment.apiUrl+"movie/";
+    console.log("MovieService works");
   }
-  getClients(){
-    return this.httpClient.get<Client[]>(this.baseurl);
+  getMovies(){
+    return this.httpClient.get<Movie[]>(this.baseurl);
   }
-  getClient(id:string){
+  getMovie(id:string){
     console.log("pidiendo a", this.baseurl+id);
-    return this.httpClient.get<Client>(this.baseurl+id);
+    return this.httpClient.get<Movie>(this.baseurl+id);
   }
-  updateClient(client:Client){
+  updateMovie(client:Movie){
     return this.httpClient.put(this.baseurl+"update/", client);
   }
 
-  createClient(client:Client){
+  createMovie(client:Movie){
     return this.httpClient.post(this.baseurl+"add/", client);
   }
 
-  deleteClient(id:string){
+  deleteMovie(id:number){
     return this.httpClient.delete(this.baseurl+"delete/"+id);
   }
 }
