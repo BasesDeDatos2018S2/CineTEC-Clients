@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Seat} from '../../classes/seat';
+import { Seat } from '../../classes/seat';
 @Component({
   selector: 'app-buy-ticket',
   templateUrl: './buy-ticket.component.html',
@@ -17,33 +17,29 @@ export class BuyTicketComponent implements OnInit {
   fillStateColors: string[] = [];
   sillones: string[] = [];
   filas: string[] = [];
-  statusColors: Map<string, string> = new Map<string, string>();
   step: number;
   total_seats: number;
-  setected_seats:Map<number[],number>;
+  selected_seats: Map<string, Seat>; // col,row
+  client_id: string;
+  client_verified: boolean;
+  create_client: boolean;
+
   constructor() {
     this.step = 0;
     this.total_seats = 1;
-    this.setected_seats= new Map<number[],number>();
-
-    for (var i = 0; i < 80; i++) {
-      this.fillStateColors[i] = "#FFFFFF";
-    }
+    this.selected_seats = new Map<string, Seat>();
     this.filas = ["A", "B", "C", "E", "D", "F", "G"];//
     this.sillones = ["1", "2", "3", "4", "5", "6", "7", "8", "10"];//
-
-    for (let f of this.filas) {
-      for (let s of this.sillones) {
-        this.statusColors[f + s] = "#555555"
-      }
-    }
-
+    this.client_id = "";
+    this.client_verified = false;
+    this.create_client = false;
   }
 
   ngOnInit() {
     console.log("current page", this.screening);
 
   }
+
   nextStep() {
 
     if (this.total_seats > 0) {
@@ -53,9 +49,7 @@ export class BuyTicketComponent implements OnInit {
       else {
         this.step = 3;
       }
-
     }
-
   }
 
   previousStep() {
@@ -70,21 +64,68 @@ export class BuyTicketComponent implements OnInit {
 
   }
 
-  selectorAsiento(seat:string){
-    if(this.statusColors[seat]== "#555555"){
-      this.statusColors[seat]= "#1fb51c"
+
+
+  selectorAsiento(seat_id: string, col: number, row: number) {
+    let seat = new Seat(col, row);
+    if (this.selected_seats.has(seat_id)) {
+      this.selected_seats.delete(seat_id);
+
+
     }
-    else{
-      this.statusColors[seat]= "#555555"
+    else {
+
+
+      if (this.selected_seats.size < this.total_seats) {
+        this.selected_seats.set(seat_id, seat);
+
+      }
+
+
     }
-    console.log(seat);
+
+console.log(this.getCurrentSeats());
   }
 
-  getStatusColor(fila, sillon){
 
-  return this.statusColors[fila+sillon]
+
+
+
+  getStatusColor(seat_id: string) {
+
+    let color: string = "#555555";
+    if (this.selected_seats.has(seat_id)) {
+      color = "#1fb51c";
+    }
+    return color;
   }
 
+  verifyClientId() {
+    this.client_verified = true;
+    console.log("client id", this.client_id);
+  }
 
+  showCreateClient() {
+    this.create_client = true;
+
+  }
+
+  submitNewClient() {
+    console.log('cliente creado');
+  }
+
+  cancelCreateClient() {
+    this.create_client = false;
+  }
+
+  getCurrentSeats(){
+    let result:string = "";
+    this.selected_seats.forEach( (value: Seat, key: string) =>  {
+      result = result.concat(key+", ");
+    }
+  );
+
+  result = result.substring(0,result.lastIndexOf(","));
+return result  }
 
 }

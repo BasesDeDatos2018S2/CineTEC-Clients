@@ -1,20 +1,3 @@
-
-<div class="card">
-<!-- <app-navbar></app-navbar> -->
-
-
-<div class="">
-  ssss
-</div>
-<div class="">
-  sss
-</div>
-
-<script src="" charset="utf-8"></script>
-</div>
-
-
-
 <div class="jumbotron" *ngIf="step==0">
 
   <h1 class="display-4">Seleccion de entradas</h1>
@@ -23,94 +6,47 @@
 
 
   <div class="input-group">
-  <input type="number" class="form-control"[(ngModel)]="total_seats" min="1" max="20" >
-  <div class="input-group-append">
-    <span class="input-group-text">₡</span>
-    <span class="input-group-text">{{total_seats*3000}}</span>
+    <input type="number" class="form-control" [(ngModel)]="total_seats" min="1" max="20">
+    <div class="input-group-append">
+      <span class="input-group-text">₡</span>
+      <span class="input-group-text">{{total_seats*3000}}</span>
+    </div>
   </div>
-</div>
-
-  <!-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
-  <a class="btn btn-primary btn-lg" href="#" role="button" (click)="nextStep()">Siguiente</a>
-
-
+  <button class="btn btn-primary btn-lg" href="#" role="button" (click)="nextStep()" [disabled]="this.total_seats<0">Siguiente </button>
 </div>
 
 
 <div class="jumbotron" *ngIf="step==1">
-
   <h1 class="display-4">Seleccion de butacas</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
   <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <div class="">
+    <svg viewBox="-10 -10 250 250" height="500" width="500">
+      <g *ngFor="let fila of filas;let j = index" [attr.transform]="'translate(' + 0 + ' , '+ 30*j + ')'">
 
-
-
-
-
-
-
-
-<div class="">
-
-
-  <svg  viewBox="-10 -10 300 300" height="500" width="500">
-    <g
-      *ngFor="let fila of filas;let j = index"
-         [attr.transform]="'translate(' + 0 + ' , '+ 30*j + ')'"
-         >
-
-        <g
-          *ngFor="let sillon of sillones;let i = index"
-           [attr.transform]="'translate(' + i*30+ ' , '+ 0 + ')'"
-            (click)="selectorAsiento(fila+sillon)"
-           >
-          <path
-             id="rect872-6-9-0-2-1"
-             d="m 3.5582017,0.46908 c -1.82878,0 -3.30952004,1.48553 -3.41491004,3.37057 h -0.011 v 0.21347 2.2516 6.95461 6.67885 h 0.0269 c -7.4e-4,0.0457 -0.007,0.0901 -0.007,0.13597 0,3.76355 2.89562004,6.79356 6.49225004,6.79356 H 19.999161 c 3.59662,0 6.492229,-3.03001 6.492229,-6.79356 0,-0.0459 -0.006,-0.0903 -0.007,-0.13597 h 0.0269 v -6.65758 h 0.01889 v -6.95461 -2.2516 -0.21347 h -0.01009 c -0.105569,-1.88484 -1.586259,-3.37057 -3.414899,-3.37057 -1.82864,0 -3.30932,1.48573 -3.41491,3.37057 h -0.0101 v 0.21347 2.2516 6.93334 H 6.9827317 v -6.95461 -2.2516 -0.21347 h -0.0101 c -0.10528,-1.88505 -1.58603,-3.37057 -3.41481,-3.37057 z"
-            [attr.fill]="getStatusColor(fila,sillon)"
-             style="fill-opacity:1;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-          <rect
-             rx="3.6738658"
-             ry="1.8774689"
-             y="3.83664"
-             x="6.9953814"
-             height="16.324476"
-             width="12.67173"
-             id="rect872-6-5-2-3-6-6-8"
-             style="fill:#1c87b5;fill-opacity:1;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-             <text>
-               <tspan
-               [attr.fill]="'#000000'"
-                style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:1.2599206"
-                y="26"
-                x="9"
-                id="tspan6230"
-                sodipodi:role="line">{{fila+sillon }}</tspan></text>
+        <g *ngFor="let sillon of sillones;let i = index" [attr.transform]="'translate(' + i*30+ ' , '+ 0 + ')'" (click)="selectorAsiento(fila+sillon,j,i)">
+          <path id="rect872-6-9-0-2-1" d="m 3.5582017,0.46908 c -1.82878,0 -3.30952004,1.48553 -3.41491004,3.37057 h -0.011 v 0.21347 2.2516 6.95461 6.67885 h 0.0269 c -7.4e-4,0.0457 -0.007,0.0901 -0.007,0.13597 0,3.76355 2.89562004,6.79356 6.49225004,6.79356 H 19.999161 c 3.59662,0 6.492229,-3.03001 6.492229,-6.79356 0,-0.0459 -0.006,-0.0903 -0.007,-0.13597 h 0.0269 v -6.65758 h 0.01889 v -6.95461 -2.2516 -0.21347 h -0.01009 c -0.105569,-1.88484 -1.586259,-3.37057 -3.414899,-3.37057 -1.82864,0 -3.30932,1.48573 -3.41491,3.37057 h -0.0101 v 0.21347 2.2516 6.93334 H 6.9827317 v -6.95461 -2.2516 -0.21347 h -0.0101 c -0.10528,-1.88505 -1.58603,-3.37057 -3.41481,-3.37057 z"
+            [attr.fill]="getStatusColor(fila+sillon)" style="fill-opacity:1;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+          <rect rx="3.6738658" ry="1.8774689" y="3.83664" x="6.9953814" height="16.324476" width="12.67173" id="rect872-6-5-2-3-6-6-8" style="fill:#1c87b5;fill-opacity:1;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+          <text>
+            <tspan [attr.fill]="'#000000'" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:1.2599206"
+              y="26" x="9" id="tspan6230" sodipodi:role="line">{{fila+sillon }}</tspan>
+          </text>
         </g>
       </g>
+    </svg>
+  </div>
 
-  </svg>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a class="btn btn-primary btn-lg" href="#" role="button" (click)="previousStep()">Regresar</a>
-  <a class="btn btn-primary btn-lg" href="#" role="button" (click)="nextStep()">Siguiente</a>
+  <div class="alert alert-danger" role="alert" *ngIf="this.selected_seats.size > this.total_seats">
+    Ha seleccionado demasiadas butacas, por favor desmarque {{this.selected_seats.size - this.total_seats}} butacas
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="this.selected_seats.size < this.total_seats &&  this.total_seats -this.selected_seats.size  == 1">
+    Aun debe seleccionar una butaca mas.
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="this.selected_seats.size < this.total_seats &&  this.total_seats -this.selected_seats.size  != 1">
+    Aun debe seleccionar {{ this.total_seats- this.selected_seats.size}} butacas mas.
+  </div>
+  <button class="btn btn-primary btn-lg" href="#" role="button" (click)="previousStep()">Regresar </button>
+  <button class="btn btn-primary btn-lg" href="#" role="button" (click)="nextStep()" [disabled]="this.selected_seats.size != this.total_seats">Siguiente </button>
 
 
 
@@ -120,20 +56,137 @@
 <div class="jumbotron" *ngIf="step==2">
 
   <h1 class="display-4">Terminar compra</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <p class="lead">Para el proceso de facturacion electronica, requerimos su cedula.</p>
   <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <a class="btn btn-primary btn-lg" href="#" role="button" (click)="previousStep()">Regresar</a>
-  <a class="btn btn-primary btn-lg" href="#" role="button" (click)="nextStep()">Siguiente</a>
+
+
+  <div class="" *ngIf="!(client_verified || create_client)">
+
+
+  Si ya se encuentra registrado, puede ingresar los datos de su cuenta.
+  <form class="form-inline">
+    <label class="my-1 mr-2" for="date2">Cedula</label>
+    <input type="text" class="form-control" placeholder="112233445" name="date2" [(ngModel)]="client_id">
+    <button class="btn btn-success" (click)="verifyClientId()" [disabled]="false">Verificar datos </button>
+
+  </form>
+
+  </div>
+  <div class="" *ngIf="!(client_verified || create_client)">
+
+    En caso de se un cliente nuevo, puede crear una cuenta nueva
+    <button class="btn btn-info " href="#" role="button" (click)="showCreateClient()" [disabled]="false">Registrarse </button>
+  </div>
+
+<div class="" *ngIf="client_verified">
+
+
+  <h3>Datos cliente:</h3>
+
+  <div class="card card-body" >
+    <div class="">
+      Nombre: Gustavo Segura
+
+    </div>
+    <div class="">
+      Correo: gsegura96@gmail.com
+
+    </div>
+    <div class="">
+      Telefono: 88885588
+
+    </div>
+
+  </div>
+
+</div>
+
+
+  <div class="" *ngIf="create_client">
+
+<h3>Crear nuevo cliente:</h3>
+  <div class="card card-body" >
+
+
+
+    <form>
+      <div class="form-inline">
+        <label class="my-1 mr-2" for="id">Cedula</label>
+        <input type="number" class="form-control" placeholder="123456789" name="id" [(ngModel)]="client_id">
+      </div>
+
+      <div class="form-inline">
+        <label class="my-1 mr-2" for="name">Nombre</label>
+        <input type="text" class="form-control" placeholder="Juan" name="name" [(ngModel)]="client_id">
+      </div>
+
+      <div class="form-inline">
+        <label class="my-1 mr-2" for="lname1">Primer apellido</label>
+        <input type="text" class="form-control" placeholder="Perez" name="lname1" [(ngModel)]="client_id">
+      </div>
+
+      <div class="form-inline">
+        <label class="my-1 mr-2" for="lname2">Segundo apellido</label>
+        <input type="text" class="form-control" placeholder="Mora" name="lname2" [(ngModel)]="client_id">
+      </div>
+
+      <div class="form-inline">
+        <label class="my-1 mr-2" for="email">Correo</label>
+        <input type="text" class="form-control" placeholder="jperez@gmail.com" name="email" [(ngModel)]="client_id">
+      </div>
+
+      <button class="btn btn-success" (click)="submitNewClient()" [disabled]="false">Crear usuario </button>
+      <button class="btn btn-danger" (click)="cancelCreateClient()" [disabled]="false">Cancelar </button>
+    </form>
+  </div>
+  </div>
+
+  <div class="" *ngIf="true">
+
+
+    <h3>Datos compra:</h3>
+
+    <div class="card card-body" >
+      <div class="">
+        Pelicula: Deadpool
+
+      </div>
+      <div class="">
+        Butacas: {{getCurrentSeats()}}
+
+      </div>
+      <div class="">
+        Fecha: 9/12/2018
+
+      </div>
+
+      <div class="">
+        Hora: 8pm
+
+      </div>
+
+      <div class="">
+        Total: {{total_seats*3000}}
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <button class="btn btn-primary btn-lg" href="#" role="button" (click)="previousStep()">Regresar </button>
+  <button class="btn btn-success btn-lg" href="#" role="button" (click)="nextStep()" [disabled]="!client_verified">Confirmar Compra </button>
 </div>
 
 
 <div class="jumbotron" *ngIf="step==3">
 
   <h1 class="display-4">Descargar factura</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
   <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <a class="btn btn-primary btn-lg" href="#" role="button" (click)="nextStep()">Regresar a la cartelera</a>
+  <button class="btn btn-primary btn-lg" href="#" role="button" (click)="nextStep()" [disabled]="false">Regresar a la Cartelera </button>
 
 </div>
