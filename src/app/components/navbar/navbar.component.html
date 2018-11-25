@@ -17,11 +17,7 @@
             <option selected>Choose...</option>
             <option *ngFor=" let project of ['test1','test2','test3']"  [value]="project">{{project}}</option>
           </select>
-
       </a>
-
-
-
       <li class="nav-item">
         <button class="btn btn-danger" type="button"  (click)="selectCinema()">Ver cartelera</button>
       </li>

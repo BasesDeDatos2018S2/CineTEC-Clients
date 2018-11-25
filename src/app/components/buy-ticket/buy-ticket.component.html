@@ -1,0 +1,71 @@
+
+<div class="card">
+<!-- <app-navbar></app-navbar> -->
+
+
+<div class="">
+  ssss
+</div>
+<div class="">
+  sss
+</div>
+
+<script src="" charset="utf-8"></script>
+</div>
+
+
+
+<div class="jumbotron" *ngIf="step==0">
+
+  <h1 class="display-4">Seleccion de entradas</h1>
+  <p class="lead">Ingrese la cantidad de entradas que entradas que desea</p>
+  <hr class="my-4">
+
+
+  <div class="input-group">
+  <input type="number" class="form-control"[(ngModel)]="total_seats" min="1" max="20" >
+  <div class="input-group-append">
+    <span class="input-group-text">₡</span>
+    <span class="input-group-text">{{total_seats*3000}}</span>
+  </div>
+</div>
+
+  <!-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
+  <a class="btn btn-primary btn-lg" href="#" role="button" (click)="nextStep()">Siguiente</a>
+
+
+</div>
+
+
+<div class="jumbotron" *ngIf="step==1">
+
+  <h1 class="display-4">Seleccion de butacas</h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <a class="btn btn-primary btn-lg" href="#" role="button" (click)="previousStep()">Regresar</a>
+  <a class="btn btn-primary btn-lg" href="#" role="button" (click)="nextStep()">Siguiente</a>
+
+
+</div>
+
+<div class="jumbotron" *ngIf="step==2">
+
+  <h1 class="display-4">Terminar compra</h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <a class="btn btn-primary btn-lg" href="#" role="button" (click)="previousStep()">Regresar</a>
+  <a class="btn btn-primary btn-lg" href="#" role="button" (click)="nextStep()">Siguiente</a>
+</div>
+
+
+<div class="jumbotron" *ngIf="step==3">
+
+  <h1 class="display-4">Descargar factura</h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <a class="btn btn-primary btn-lg" href="#" role="button" (click)="nextStep()">Regresar a la cartelera</a>
+
+</div>
