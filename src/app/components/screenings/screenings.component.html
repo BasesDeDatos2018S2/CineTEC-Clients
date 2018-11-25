@@ -1,0 +1,23 @@
+
+<div class="card" *ngFor="let movie of ['Deadpool','Titanic','Dumbo']" >
+<div class="row">
+
+  <div class="col-md-2.5">
+    <img src="https://m.media-amazon.com/images/M/MV5BYzE5MjY1ZDgtMTkyNC00MTMyLThhMjAtZGI5OTE1NzFlZGJjXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg" class="w-400">
+  </div>
+
+  <div class="col-md-8 px-3">
+
+    <a class="card-title">{{movie}}</a> <span class="clasificacion">TP</span>
+
+    <div><span class="title_span">Clasificacion:</span> <span class="card-text">PG13 </span>     </div>
+    <div> <span class="title_span">Director:</span> <span class="card-text"> Cristopher Nolan</span> </div>
+
+    <div> <span class="title_span">Protagonistas:</span> <span class="card-text"> Cameron Diaz, Jonny Depp y Michael Jordan</span> </div>
+    <div> <span class="title_span">Duracion:</span> <span class="card-text"> 130 minutos</span> </div>
+    <button class="btn btn-success"  *ngFor="let n of [1,2,3]" > {{n}}:00 pm </button>
+  </div>
+
+</div>
+
+</div>
