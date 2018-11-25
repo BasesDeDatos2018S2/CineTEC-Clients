@@ -9,6 +9,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { BuyTicketComponent } from './components/buy-ticket/buy-ticket.component';
 
 import { ClientsService } from './services/clients.service';
+import { CinemasService } from './services/cinemas.service';
 import { Observable } from 'rxjs';
 
 
