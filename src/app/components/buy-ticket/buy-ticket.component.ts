@@ -152,4 +152,10 @@ console.log(this.getCurrentSeats());
   result = result.substring(0,result.lastIndexOf(","));
 return result  }
 
+
+  regresar(){
+    localStorage.setItem('screening', JSON.stringify(""));
+
+  }
+
 }
