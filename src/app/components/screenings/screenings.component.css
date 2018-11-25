@@ -11,3 +11,7 @@
   margin:20px;
 }
   .title_span {font-size:22px;}
+  #inner {
+    width: 50%;
+    margin: 0 auto;
+  }
