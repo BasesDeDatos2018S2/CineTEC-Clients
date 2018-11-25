@@ -12,7 +12,7 @@
       <span class="input-group-text">{{total_seats*3000}}</span>
     </div>
   </div>
-  <button class="btn btn-primary btn-lg" href="#" role="button" (click)="nextStep()" [disabled]="this.total_seats<0">Siguiente </button>
+  <button class="btn btn-primary btn-lg" href="#" role="button" (click)="nextStep()" [disabled]="this.total_seats<=0">Siguiente </button>
 </div>
 
 

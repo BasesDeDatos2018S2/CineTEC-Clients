@@ -42,7 +42,6 @@ export class BuyTicketComponent implements OnInit {
 
   nextStep() {
 
-    if (this.total_seats > 0) {
       if (this.step < 3) {
         this.step++;
       }
@@ -50,7 +49,7 @@ export class BuyTicketComponent implements OnInit {
         this.step = 3;
       }
     }
-  }
+  
 
   previousStep() {
 
